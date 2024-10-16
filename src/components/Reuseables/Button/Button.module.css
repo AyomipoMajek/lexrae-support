@@ -1,0 +1,18 @@
+.btn {
+  width: 138px;
+  height: 53px;
+  background-color: var(--sec-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1042) {
+ .btn {
+  width: 176px;
+  height: 63px;
+ }
+  
+}

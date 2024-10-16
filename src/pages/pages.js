@@ -11,14 +11,17 @@ const ServicesComponent = React.lazy(()=> import("./Services"))
 
 const pages = [
   {
+    name: "Home",
     route: "/",
     element: <HomeComponent />
   },
   {
+    name: "About",
     route: "/about",
     element: <AboutComponent />
   },
   {
+    name: "Blogs",
     route: "/blogs",
     element: <BlogsComponent />
   },
@@ -27,6 +30,7 @@ const pages = [
     element: <BlogsDetailComponent />
   },
   {
+    name: "Career",
     route: "/career",
     element: <CareerComponent/>
   },
@@ -35,10 +39,12 @@ const pages = [
     element: <CareerDetailComponent />
   },
   {
+    name: "Contact",
     route: "/contact",
     element: <ContactUsComponent />
   },
   {
+    name: "Services",
     route: "/services",
     element: <ServicesComponent />
   }

@@ -11,7 +11,7 @@ import search from './search.png'
 import times from './times.png'
 import twitter from './twitter.png'
 
-export default Icons = {
+const Icons = {
   arrowLeft: arrowLeft,
   arrowRight,
   facebook,
@@ -25,3 +25,5 @@ export default Icons = {
   times,
   twitter
 } 
+
+export default Icons

@@ -7,13 +7,15 @@ import header3 from  './header3.png'
 import logo from  './logo.png'
 import tom from  './tom.png'
 
-export default Images = {
+const Images = {
   alex,
   angea,
   banner_section,
   header1,
   header2,
   header3,
-  logo,
+  logo: logo,
   tom
 }
+
+export default Images
