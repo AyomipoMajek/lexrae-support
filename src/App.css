@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+  font-family: 'calibri';
+  src: url('./Assets//fonts/calibri-font-family/calibri-regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --pry-color: #404040;
   --sec-color: #29AAE3;
   --access-color: #8EAAB7;
+  --pry-font: "calibri", sans-serif; 
+  --sec-font: "Poppins", sans-serif;   
 }
+
+
 
 * {
   padding: 0;
@@ -10,11 +23,41 @@
   box-sizing: border-box;
 }
 
-[data-aos="menu"] {
-    transform: translateX(200px);
+body {
+  overflow: hidden;
+  font-family: var(--pry-font);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.desktop {
+  display: none;
+}
+
+[data-aos="menu-right"] {
+    transform: translateX(100px);
+    opacity: 0;
     transition-property: transform, opacity;
   
     &.aos-animate {
+    opacity: 1;
     transform: translateX(0px);
+    transition-property: transform, opacity;
  }
+}
+
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
+  }
 }
