@@ -24,8 +24,12 @@
 }
 
 body {
-  overflow: hidden;
   font-family: var(--pry-font);
+}
+
+section {
+  padding-top: 100px;
+  height: 200vh;
 }
 
 li {
@@ -51,6 +55,34 @@ a {
     transition-property: transform, opacity;
  }
 }
+
+.active-link {
+  position: relative;
+}
+
+.active-link::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--sec-color);
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform:  translateX(-50%);
+  animation: fade-in 0.5s linear;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 
 @media (min-width: 768px) {
   .mobile {

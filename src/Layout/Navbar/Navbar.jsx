@@ -10,8 +10,17 @@ import { contactNumber } from '../../Constants/constant'
 
 const Navbar = () => {
   const [opentray, setopentray] = useState(false)
+  const [header, setheader] = useState(false)
   const menu = pages.filter((page)=> page?.name)
   useEffect(() => {
+    if(window.innerWidth > 768){
+      setopentray(true)
+      AOS.init({
+        duration: 1000,
+        once: false,
+        easing:"linear",
+      })
+    }
     if(opentray) {
       AOS.init({
         duration: 1000,
@@ -21,13 +30,38 @@ const Navbar = () => {
     }
   }, [opentray]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setopentray(true);
+      } else {
+        setopentray(false);
+      }
+    };
+    const handleHResize = () => {
+      if (window.scrollY >= 50) {
+        setheader(true);
+      } else {
+        setheader(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    window.addEventListener("scroll", handleHResize);
+    handleResize();
+    handleHResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleHResize);
+    };
+  }, []);
+  
   return (
-    <nav className={style.nav}>
-      <Link to="/">
-        <img src={Images.logo} alt='lexrea logo'/>
-      </Link>
+    <nav className={`${style.nav} ${header ? style.active_header : ""}`}>
+      <NavLink to="/">
+        <img src={Images.logo} alt='lexrea logo' className={style.logo}/>
+      </NavLink>
       <div className={`${style.menu} ${opentray ? style.active : ""}`}>
-        <div className={`${style.menuHeader} mobile `}>
+        <div className={`${style.menuHeader} mobile`}>
           <Link to="/" className={`${style.headerlogo} ${opentray ? style.active : ""}`} data-aos= {"fade-left"}>
             <img src={Images.logo} alt='Go back Home'  onClick={()=> setopentray(false)}/>
           </Link>
@@ -36,7 +70,7 @@ const Navbar = () => {
         <ul>
           {menu.map((e,index)=>(
             <li key={e.name} className={opentray ? style.block : ""} data-aos={"menu-right"} data-aos-delay={`${index * 200}`}>
-              <NavLink to={e.route} onClick={()=>setopentray(false)}>{e.name}</NavLink>
+              <NavLink className={({isActive})=> isActive ? "active-link" : ""} to={e.route} onClick={()=>setopentray(false)}>{e.name}</NavLink>
             </li>
           ))}
         </ul>
@@ -52,7 +86,7 @@ const Navbar = () => {
           <p>© 2024 Lexrea support - All rights reserved</p>
         </div>
       </div>
-      <div className={style.openTray} >
+      <div className={`${style.openTray} mobile`} >
         <img src={Icons.menu} alt={"open menu"} onClick={()=>setopentray(true)} />
       </div>
     </nav>
